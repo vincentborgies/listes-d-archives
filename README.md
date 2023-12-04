@@ -1,7 +1,7 @@
 # Listes d'Archives
 
 ## Description du Projet
-Listes d'Archives est une application de gestion d'utilisateurs qui permet d'ajouter des utilisateurs avec leur nom, prénom et date d'inscription. Les principales fonctionnalités incluent :
+Petite fonctionnalité qui permet d'afficher une des listes d'archiove d'utilisateurs. Les principales fonctionnalités incluent :
 
 - Ajouter des utilisateurs.
 - Afficher la liste des utilisateurs inscrits il y a 1 an ou moins.
