@@ -5,7 +5,7 @@ const modalContainer = document.getElementById('modalContainer')
 
 // Ajoutez un gestionnaire d'événement pour ouvrir la modal
 openModalBtn.addEventListener('click', () => {
-    modalContainer.style.display = 'block'
+    modalContainer.style.display = 'flex';
 })
 
 // Ajoutez un gestionnaire d'événement pour fermer la modal

@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erreur de préparation de la requête : " . $connexion->error;
     }
 } else {
-    echo "Méthode de requête incorrecte.";
+    echo "  <p class='error'>Méthode de requête incorrecte.</p>";
 }
 
 // Sélectionnez les utilisateurs inscrits il y a 1 an ou moins
@@ -90,7 +90,7 @@ $sql1To2Years = "SELECT * FROM user WHERE subscribe_date >= '$twoYearsAgo' AND s
 $result1To2Years = $connexion->query($sql1To2Years);
 
 // Affichez les utilisateurs dans les listes appropriées
-echo '<div id="1yearandless"><h2>Utilisateurs inscrits il y a 1 an et moins</h2>';
+echo '<div id="oneyearandless"><h3>Utilisateurs inscrits il y a 1 an et moins :</h3>';
 echo '<table>';
 echo '<tr><th>Nom</th><th>Prénom</th><th>Date d\'inscription</th></tr>';
 while ($row = $result1Year->fetch_assoc()) {
@@ -105,7 +105,7 @@ echo '</div>';
 
 
 // Affichez les utilisateurs inscrits entre 1 et 2 ans
-echo '<div id="1to2years"><h2>Utilisateurs inscrits entre 1 et 2 ans</h2>';
+echo '<div id="1to2years"><h3>Utilisateurs inscrits entre 1 et 2 ans : </h3>';
 echo '<table>';
 echo '<tr><th>Nom</th><th>Prénom</th><th>Date d\'inscription</th></tr>';
 while ($row = $result1To2Years->fetch_assoc()) {
@@ -122,7 +122,7 @@ echo '</div>';
 // Automatiquement supprimer les utilisateurs inscrits entre 1 et 2 ans
 $sqlDeleteOldUsers = "DELETE FROM user WHERE subscribe_date < '$twoYearsAgo'";
 if ($connexion->query($sqlDeleteOldUsers) === TRUE) {
-    echo "Les utilisateurs inscrits il y a plus de 2 ans ont été supprimés de la base de données.";
+    echo "<p class='success'>Les utilisateurs inscrits il y a plus de 2 ans ont été supprimés de la base de données </p>";
 } else {
     echo "Erreur lors de la suppression des utilisateurs : " . $connexion->error;
 }
