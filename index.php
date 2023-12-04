@@ -83,23 +83,49 @@ $oneYearAgo = date("Y-m-d", strtotime("-1 year"));
 $sql1Year = "SELECT * FROM user WHERE subscribe_date >= '$oneYearAgo'";
 $result1Year = $connexion->query($sql1Year);
 
-// Sélectionnez les utilisateurs inscrits il y a plus de 2 ans
+// Sélectionnez les utilisateurs inscrits il y a entre 1 et 2 ans
 $twoYearsAgo = date("Y-m-d", strtotime("-2 years"));
 $sql2Years = "SELECT * FROM user WHERE subscribe_date < '$twoYearsAgo'";
-$result2Years = $connexion->query($sql2Years);
+$sql1To2Years = "SELECT * FROM user WHERE subscribe_date >= '$twoYearsAgo' AND subscribe_date < '$oneYearAgo'";
+$result1To2Years = $connexion->query($sql1To2Years);
 
 // Affichez les utilisateurs dans les listes appropriées
-echo '<div id="1yearandless"><h2>inscrit il y a 1 an et moins</h2><ul>';
+echo '<div id="1yearandless"><h2>Utilisateurs inscrits il y a 1 an et moins</h2>';
+echo '<table>';
+echo '<tr><th>Nom</th><th>Prénom</th><th>Date d\'inscription</th></tr>';
 while ($row = $result1Year->fetch_assoc()) {
-    echo '<li>' . $row['firstname'] . ' ' . $row['lastname'] . ' (' . $row['subscribe_date'] . ')</li>';
+    echo '<tr>';
+    echo '<td>' . $row['lastname'] . '</td>';
+    echo '<td>' . $row['firstname'] . '</td>';
+    echo '<td>' . $row['subscribe_date'] . '</td>';
+    echo '</tr>';
 }
-echo '</ul></div>';
+echo '</table>';
+echo '</div>';
 
-echo '<div id="2yearsandmore"><h2>inscrit il y a plus de 2 ans</h2><ul>';
-while ($row = $result2Years->fetch_assoc()) {
-    echo '<li>' . $row['firstname'] . ' ' . $row['lastname'] . ' (' . $row['subscribe_date'] . ')</li>';
+
+// Affichez les utilisateurs inscrits entre 1 et 2 ans
+echo '<div id="1to2years"><h2>Utilisateurs inscrits entre 1 et 2 ans</h2>';
+echo '<table>';
+echo '<tr><th>Nom</th><th>Prénom</th><th>Date d\'inscription</th></tr>';
+while ($row = $result1To2Years->fetch_assoc()) {
+    echo '<tr>';
+    echo '<td>' . $row['lastname'] . '</td>';
+    echo '<td>' . $row['firstname'] . '</td>';
+    echo '<td>' . $row['subscribe_date'] . '</td>';
+    echo '</tr>';
 }
-echo '</ul></div>';
+echo '</table>';
+echo '</div>';
+
+
+// Automatiquement supprimer les utilisateurs inscrits entre 1 et 2 ans
+$sqlDeleteOldUsers = "DELETE FROM user WHERE subscribe_date < '$twoYearsAgo'";
+if ($connexion->query($sqlDeleteOldUsers) === TRUE) {
+    echo "Les utilisateurs inscrits il y a plus de 2 ans ont été supprimés de la base de données.";
+} else {
+    echo "Erreur lors de la suppression des utilisateurs : " . $connexion->error;
+}
 
 // Fermez la connexion à la base de données
 $connexion->close();

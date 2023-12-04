@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Style pour le corps de la page */
+/* Style général pour le corps de la page */
 body {
     margin-top: 50px;
     display: flex;
@@ -16,20 +16,20 @@ body {
     height: 100vh;
 }
 
-/* Style pour le titre */
+/* Style général pour les titres */
 h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Style pour les étiquettes */
+/* Style général pour les étiquettes */
 label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-/* Style pour les champs de saisie */
+/* Style général pour les champs de saisie */
 input[type='text'],
 input[type='date'] {
     width: 100%;
@@ -40,7 +40,7 @@ input[type='date'] {
     margin-bottom: 10px;
 }
 
-/* Style pour le bouton d'envoi */
+/* Style général pour les boutons */
 .btn {
     background-color: #007bff;
     color: #fff;
@@ -53,13 +53,15 @@ input[type='date'] {
     margin: 0 auto;
 }
 
-/* Style pour le bouton d'envoi au survol */
+/* Style général pour les boutons au survol */
 .btn:hover {
     background-color: #0056b3;
 }
 
-#openModalBtn{
+/* Style spécifique pour le bouton "Ajouter un utilisateur" */
+#openModalBtn {
     margin: 0;
+    cursor: pointer;
 }
 
 /* Style pour la modal */
@@ -67,7 +69,6 @@ input[type='date'] {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
     display: none;
     position: fixed;
     top: 0;
@@ -97,12 +98,39 @@ input[type='date'] {
     cursor: pointer;
 }
 
-#lists {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+.close-btn:hover{
+    color: red;
 }
 
-#openModalBtn {
-    cursor: pointer;
+/* Style général pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Style de l'en-tête du tableau */
+th {
+    background-color: hsl(211, 100%, 50%);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style des lignes impaires du tableau */
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Style des cellules du tableau */
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Style au survol de la ligne du tableau */
+tr:hover {
+    background-color: #e0e0e0;
 }
