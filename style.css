@@ -175,7 +175,7 @@ tr:hover {
     width: 100%;
 }
 
-#searchInput{
+#search{
     width:50%;
 }
 
@@ -184,4 +184,23 @@ tr:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#all-users{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display-search{
+    width: 100%;
+}
+
+#display-default{
+    width:100%;
+}
+
+.center{
+    text-align: center;
 }
