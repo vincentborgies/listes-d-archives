@@ -1,16 +1,5 @@
 <?php
-$server = "localhost";
-$user = "root";
-$password = "";
-$db = "cda";
-
-// Créez une connexion à la base de données
-$connexion = new mysqli($server, $user, $password, $db);
-
-// Vérifiez si la connexion a réussi
-if ($connexion->connect_error) {
-    die("Échec de la connexion à la base de données : " . $connexion->connect_error);
-}
+require_once('dbConnect.php');
 
 // Vérifiez si 'search' est défini dans la requête GET
 if (isset($_GET['search'])) {
@@ -53,5 +42,4 @@ if (isset($_GET['search'])) {
     }
 }
 
-$connexion->close();
 ?>

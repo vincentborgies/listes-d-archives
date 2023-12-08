@@ -1,16 +1,6 @@
 <?php
-    $server = "localhost";
-    $user = "root";
-    $password = "";
-    $db = "cda";
-    
-    // Créez une connexion à la base de données
-    $connexion = new mysqli($server, $user, $password, $db);
-    
-    // Vérifiez si la connexion a réussi
-    if ($connexion->connect_error) {
-        die("Échec de la connexion à la base de données : " . $connexion->connect_error);
-    }
+
+    require_once('dbConnect.php');
 
     // Sélectionnez les utilisateurs inscrits il y a 1 an ou moins
     $oneYearAgo = date("Y-m-d", strtotime("-1 year"));
@@ -85,6 +75,4 @@
     } else {
         echo "Erreur lors de la suppression des utilisateurs : " . $connexion->error;
     }
-
-    $connexion->close();
 ?>  

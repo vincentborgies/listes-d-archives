@@ -1,16 +1,5 @@
 <?php
-    $server = "localhost";
-    $user = "root";
-    $password = "";
-    $db = "cda";
-    
-    // Créez une connexion à la base de données
-    $connexion = new mysqli($server, $user, $password, $db);
-    
-    // Vérifiez si la connexion a réussi
-    if ($connexion->connect_error) {
-        die("Échec de la connexion à la base de données : " . $connexion->connect_error);
-    }
+    require_once('dbConnect.php');
 
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['lastname']) && isset($_POST['firstname']) && isset($_POST['subscribe_date'])) {
         $lastname = $_POST["lastname"];
@@ -38,6 +27,4 @@
             echo "Erreur de préparation de la requête : " . $connexion->error;
         }
     }
-    
-    $connexion->close();
 ?>
